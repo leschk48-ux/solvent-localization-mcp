@@ -1,0 +1,30 @@
+# Smithery configuration for the SOLVENT Localization MCP server.
+# Stdio launch (used by Smithery's hosted stdio runtime and local clients).
+# The server is also deployable as a remote HTTP MCP server (see README);
+# for a remote/URL listing on Smithery, point it at the deployed /mcp URL
+# instead of using this startCommand.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      paymentsEnabled:
+        type: boolean
+        default: false
+        description: "Enable the x402 paywall on the HTTP transport (stdio is always ungated)."
+      payToAddress:
+        type: string
+        default: "ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV"
+        description: "Solana address that receives USDC payments when payments are enabled."
+  commandFunction: |-
+    (config) => ({
+      command: 'python3',
+      args: ['server.py', '--transport', 'stdio'],
+      env: {
+        PAYMENTS_ENABLED: config.paymentsEnabled ? '1' : '0',
+        PAY_TO_ADDRESS: config.payToAddress || 'ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV'
+      }
+    })
+  exampleConfig:
+    paymentsEnabled: false
+    payToAddress: "ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV"

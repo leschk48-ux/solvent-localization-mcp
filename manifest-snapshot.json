@@ -1,0 +1,361 @@
+{
+  "x402Version": 2,
+  "supportedVersions": [
+    1,
+    2
+  ],
+  "payments_enabled": true,
+  "facilitator": "https://facilitator.payai.network",
+  "resources": [
+    {
+      "resource": "https://mcp.solvent.example/localize",
+      "type": "http",
+      "x402Version": 2,
+      "description": "Translate text between English and Simplified Chinese with Web3 terminology enforced from SOLVENT's curated 238-term glossary (announcements, docs, UI strings, social posts). POST JSON {text, source_language?, target_language?}.",
+      "mimeType": "application/json",
+      "serviceName": "SOLVENT Localization",
+      "tags": [
+        "localization",
+        "translation",
+        "english-chinese",
+        "web3",
+        "mcp"
+      ],
+      "iconUrl": null,
+      "metadata": {
+        "mimeType": "application/json",
+        "description": "Translate text between English and Simplified Chinese with Web3 terminology enforced from SOLVENT's curated 238-term glossary (announcements, docs, UI strings, social posts). POST JSON {text, source_language?, target_language?}."
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+          "amount": "100000",
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "payTo": "ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV",
+          "maxTimeoutSeconds": 300,
+          "extra": {
+            "feePayer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww"
+          }
+        }
+      ],
+      "extensions": {
+        "bazaar": {
+          "info": {
+            "input": {
+              "type": "http",
+              "method": "POST",
+              "bodyType": "json",
+              "body": {
+                "text": "Staking rewards are live on mainnet. Connect your wallet and claim your airdrop.",
+                "source_language": "auto",
+                "target_language": "zh"
+              },
+              "bodyFields": {
+                "text": {
+                  "type": "string",
+                  "description": "Text to translate (max 8000 chars).",
+                  "example": "Staking rewards are live on mainnet."
+                },
+                "source_language": {
+                  "type": "string",
+                  "description": "'auto' (default), 'en' or 'zh'.",
+                  "example": "auto"
+                },
+                "target_language": {
+                  "type": "string",
+                  "description": "Optional target: 'zh' or 'en'; overrides direction.",
+                  "example": "zh"
+                }
+              }
+            },
+            "output": {
+              "type": "json",
+              "example": {
+                "translation": "质押奖励已在主网上线。连接钱包即可领取空投。",
+                "direction": "en->zh",
+                "glossary_terms_applied": [
+                  "staking",
+                  "mainnet",
+                  "wallet",
+                  "airdrop"
+                ],
+                "warnings": []
+              }
+            }
+          },
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "required": [
+              "input"
+            ],
+            "properties": {
+              "input": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "method",
+                  "bodyType",
+                  "body"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "http"
+                  },
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "POST"
+                    ]
+                  },
+                  "bodyType": {
+                    "type": "string",
+                    "enum": [
+                      "json"
+                    ]
+                  },
+                  "body": {
+                    "type": "object",
+                    "required": [
+                      "text"
+                    ],
+                    "properties": {
+                      "text": {
+                        "type": "string",
+                        "description": "Text to translate (max 8000 chars).",
+                        "example": "Staking rewards are live on mainnet."
+                      },
+                      "source_language": {
+                        "type": "string",
+                        "description": "'auto' (default), 'en' or 'zh'.",
+                        "example": "auto"
+                      },
+                      "target_language": {
+                        "type": "string",
+                        "description": "Optional target: 'zh' or 'en'; overrides direction.",
+                        "example": "zh"
+                      }
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "output": {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "example": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "resource": "https://mcp.solvent.example/review",
+      "type": "http",
+      "x402Version": 2,
+      "description": "QA a draft English or Chinese localization: flags glossary violations, avoided/literal renderings, hype and guaranteed-return wording, and tone problems, with suggested fixes. POST JSON {text, language?}.",
+      "mimeType": "application/json",
+      "serviceName": "SOLVENT Localization",
+      "tags": [
+        "localization",
+        "translation",
+        "english-chinese",
+        "web3",
+        "mcp"
+      ],
+      "iconUrl": null,
+      "metadata": {
+        "mimeType": "application/json",
+        "description": "QA a draft English or Chinese localization: flags glossary violations, avoided/literal renderings, hype and guaranteed-return wording, and tone problems, with suggested fixes. POST JSON {text, language?}."
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+          "amount": "100000",
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "payTo": "ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV",
+          "maxTimeoutSeconds": 300,
+          "extra": {
+            "feePayer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww"
+          }
+        }
+      ],
+      "extensions": {
+        "bazaar": {
+          "info": {
+            "input": {
+              "type": "http",
+              "method": "POST",
+              "bodyType": "json",
+              "body": {
+                "text": "请确认这笔事务。",
+                "language": "auto"
+              },
+              "bodyFields": {
+                "text": {
+                  "type": "string",
+                  "description": "Draft translation to review (max 8000 chars).",
+                  "example": "请确认这笔事务。"
+                },
+                "language": {
+                  "type": "string",
+                  "description": "'auto' (default), 'zh' or 'en'.",
+                  "example": "auto"
+                }
+              }
+            },
+            "output": {
+              "type": "json",
+              "example": {
+                "language_detected": "zh",
+                "issue_count": 1,
+                "issues": [
+                  {
+                    "severity": "high",
+                    "type": "terminology",
+                    "excerpt": "事务",
+                    "problem": "Avoided rendering for 'transaction'.",
+                    "suggestion": "Use '交易' instead."
+                  }
+                ]
+              }
+            }
+          },
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "required": [
+              "input"
+            ],
+            "properties": {
+              "input": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "method",
+                  "bodyType",
+                  "body"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "http"
+                  },
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "POST"
+                    ]
+                  },
+                  "bodyType": {
+                    "type": "string",
+                    "enum": [
+                      "json"
+                    ]
+                  },
+                  "body": {
+                    "type": "object",
+                    "required": [
+                      "text"
+                    ],
+                    "properties": {
+                      "text": {
+                        "type": "string",
+                        "description": "Draft translation to review (max 8000 chars).",
+                        "example": "请确认这笔事务。"
+                      },
+                      "language": {
+                        "type": "string",
+                        "description": "'auto' (default), 'zh' or 'en'.",
+                        "example": "auto"
+                      }
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "output": {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "example": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "resourcesV1": [
+    {
+      "resource": "https://mcp.solvent.example/localize",
+      "tool": "localize_text",
+      "price_usdc": "0.10",
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "100000",
+          "resource": "https://mcp.solvent.example/localize",
+          "description": "SOLVENT localize_text — Web3 EN<->ZH localization (0.10 USDC/call)",
+          "mimeType": "application/json",
+          "payTo": "ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV",
+          "maxTimeoutSeconds": 300,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ]
+    },
+    {
+      "resource": "https://mcp.solvent.example/review",
+      "tool": "localization_review",
+      "price_usdc": "0.10",
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "100000",
+          "resource": "https://mcp.solvent.example/review",
+          "description": "SOLVENT localization_review — Web3 EN<->ZH localization (0.10 USDC/call)",
+          "mimeType": "application/json",
+          "payTo": "ApC24q9FAsRV1ByKccGjySzchzXPwFx6AZL4Tir7NPbV",
+          "maxTimeoutSeconds": 300,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ]
+    }
+  ],
+  "free_tools": [
+    "glossary_lookup"
+  ]
+}
